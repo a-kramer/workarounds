@@ -31,6 +31,8 @@ All methods of direct embedding have failed so far.
 
 Each subsection will quote a command and then try that comman dright afterm if no *svg* image appears, then the command fails on github.
 
+The first three methods work in [pandoc](https://pandoc.org/) (`<object>`, `<embed>`, `<iframe>`), rendered in the epiphany browser.
+
 ### object tag
 
 ```html
@@ -42,10 +44,10 @@ Each subsection will quote a command and then try that comman dright afterm if n
 ### embed tag
 
 ```html
-<embed type="text/html" src="./ToolsetFlowchart-fix.svg">
+<embed type="text/html" src="./ToolsetFlowchart-fix.svg"></embed>
 ```
 
-<embed type="text/html" src="./ToolsetFlowchart-fix.svg">
+<embed type="text/html" src="./ToolsetFlowchart-fix.svg"></embed>
 
 ### iframe
 
@@ -58,10 +60,10 @@ Each subsection will quote a command and then try that comman dright afterm if n
 ### link
 
 ```html
-<link rel="html-import" href="./ToolsetFlowchart-fix.svg">
+<link rel="html-import" href="./ToolsetFlowchart-fix.svg"></link>
 ```
 
-<link rel="html-import" href="./ToolsetFlowchart-fix.svg">
+<link rel="html-import" href="./ToolsetFlowchart-fix.svg"></link>
 
 
 ### PHP style with server side substitution
