@@ -2,7 +2,7 @@
 
 ## Inkscape and Arrows
 
-Inkscape creates `svg` files that browsers cannot display correctly, see stackexchange issue: [inkscape arrow tip color disappeared in browser](https://graphicdesign.stackexchange.com/questions/158452/inkscape-arrow-tip-color-disappeared-in-browser).
+Inkscape creates `svg` files that browsers cannot display correctly, see stack-exchange issue: [inkscape arrow tip color disappeared in browser](https://graphicdesign.stackexchange.com/questions/158452/inkscape-arrow-tip-color-disappeared-in-browser).
 
 The problem is the `context-stroke` attribute value. Browsers do not
 support this.
@@ -19,7 +19,7 @@ paths at the very last step.
 
 ## README.md and svg links [no workaround found]
 
-When Github renders svg images, the whole image becomes a link to the
+When GitHub renders svg images, the whole image becomes a link to the
 file. Links (`<a>` elements) inside of the svg will be inaccessible.
 Maybe an svg image that is inline with the md document is rendered
 without being a link, and thus preserving internal links. (viewing the
@@ -29,7 +29,7 @@ All methods of direct embedding have failed so far.
 
 ## Experiments with svg images
 
-Each subsection will quote a command and then try that comman dright afterm if no *svg* image appears, then the command fails on github.
+Each subsection will quote a command and then try that command right after. If no *svg* image appears, then the command failed on GitHub.
 
 The first three methods work in [pandoc](https://pandoc.org/) (`<object>`, `<embed>`, `<iframe>`), rendered in the epiphany browser.
 
