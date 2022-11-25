@@ -1,2 +1,7 @@
-# workarounds
-These are my workarounds for common problems
+# Workarounds to Software Problems
+
+These are my workarounds for common problems.
+
+- [Inkscape](./Inkscape/README.md)
+
+
