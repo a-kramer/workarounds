@@ -34,18 +34,18 @@ Each subsection will quote a command and then try that comman dright afterm if n
 ### object tag
 
 ```html
-<object name="foo" type="text/html" data="ToolsetFlowchart-fix.svg"></object>
+<object name="figure" type="text/html" data="ToolsetFlowchart-fix.svg"></object>
 ```
 
-<object name="foo" type="text/html" data="ToolsetFlowchart-fix.svg"></object>
+<object name="figure" type="text/html" data="ToolsetFlowchart-fix.svg"></object>
 
 ### embed tag
 
 ```html
-<embed type="text/html" src="foo.inc">
+<embed type="text/html" src="./ToolsetFlowchart-fix.svg">
 ```
 
-<embed type="text/html" src="foo.inc">
+<embed type="text/html" src="./ToolsetFlowchart-fix.svg">
 
 ### iframe
 
