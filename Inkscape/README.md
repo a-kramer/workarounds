@@ -7,7 +7,8 @@ Inkscape creates `svg` files that browsers cannot display correctly, see stack-e
 The problem is the `context-stroke` attribute value. Browsers do not
 support this.
 
-The offered solutions do not work for me. So, as a workaround, make all arrow tips have the same color (pick a color with a known value):
+The offered solutions do not work for me. So, as a workaround, make
+all arrow tips have the same color (pick a color with a known value):
 
 ```sh
 sed 's/context-stroke/#121212/g' image.svg > image-fixed.svg
@@ -19,19 +20,25 @@ paths at the very last step.
 
 ## README.md and svg links [no workaround found]
 
-When GitHub renders svg images, the whole image becomes a link to the
-file. Links (`<a>` elements) inside of the svg will be inaccessible.
-Maybe an svg image that is inline with the md document is rendered
-without being a link, and thus preserving internal links. (viewing the
-svg in the _raw_ view has working links).
+This is a bit off-topic (off-Inkscape); but, related to svg images.
 
-All methods of direct embedding have failed so far.
+When GitHub renders `svg` images, the whole image becomes a hyper-link
+to the file. Links (`<a>` elements) _inside_ of the svg will be
+inaccessible.  Maybe an svg image that is inline with the md document
+is rendered without being a link, and thus preserving internal
+links. (viewing the svg in the _raw_ view has working links).
+
+All methods of direct embedding have failed so far. Even manually copy
+pasting the `<svg>…</svg>` content into the README will lead to errors
+(it will be displayed as text and truncated).
 
 ## Experiments with svg images
 
-Each subsection will quote a command and then try that command right after. If no *svg* image appears, then the command failed on GitHub.
+Each subsection will quote a command and then try that command right
+after. If no *svg* image appears, then the command failed on GitHub.
 
-The first three methods work in [pandoc](https://pandoc.org/) (`<object>`, `<embed>`, `<iframe>`), rendered in the epiphany browser.
+The first three methods work in [pandoc](https://pandoc.org/)
+(`<object>`, `<embed>`, `<iframe>`), rendered in the epiphany browser.
 
 ### object tag
 
