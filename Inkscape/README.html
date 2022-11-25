@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SVG</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="inkscape">Inkscape</h1>
+<h2 id="inkscape-and-arrows">Inkscape and Arrows</h2>
+<p>Inkscape creates <code>svg</code> files that browsers cannot display correctly, see stackexchange issue: <a href="https://graphicdesign.stackexchange.com/questions/158452/inkscape-arrow-tip-color-disappeared-in-browser">inkscape arrow tip color disappeared in browser</a>.</p>
+<p>The problem is the <code>context-stroke</code> attribute value. Browsers do not support this.</p>
+<p>The offered solutions do not work for me. So, as a workaround, make all arrow tips have the same color (pick a color with a known value):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">sed</span> <span class="st">&#39;s/context-stroke/#121212/g&#39;</span> image.svg <span class="op">&gt;</span> image-fixed.svg</span></code></pre></div>
+<p>In addition, fonts are not embedded in svg images, so they will be replaced by browsers if they are not web-safe, so convert them to paths at the very last step.</p>
+<h2 id="readme.md-and-svg-links-no-workaround-found">README.md and svg links [no workaround found]</h2>
+<p>When Github renders svg images, the whole image becomes a link to the file. Links (<code>&lt;a&gt;</code> elements) inside of the svg will be inaccessible. Maybe an svg image that is inline with the md document is rendered without being a link, and thus preserving internal links. (viewing the svg in the <em>raw</em> view has working links).</p>
+<p>All methods of direct embedding have failed so far.</p>
+<h2 id="experiments-with-svg-images">Experiments with svg images</h2>
+<p>Each subsection will quote a command and then try that comman dright afterm if no <em>svg</em> image appears, then the command fails on github.</p>
+<h3 id="object-tag">object tag</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">&lt;object</span><span class="ot"> name=</span><span class="st">&quot;figure&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/html&quot;</span><span class="ot"> data=</span><span class="st">&quot;ToolsetFlowchart-fix.svg&quot;</span><span class="kw">&gt;&lt;/object&gt;</span></span></code></pre></div>
+<object name="figure" type="text/html" data="ToolsetFlowchart-fix.svg">
+</object>
+<h3 id="embed-tag">embed tag</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">&lt;embed</span><span class="ot"> type=</span><span class="st">&quot;text/html&quot;</span><span class="ot"> src=</span><span class="st">&quot;./ToolsetFlowchart-fix.svg&quot;</span><span class="kw">&gt;&lt;/embed&gt;</span></span></code></pre></div>
+<embed type="text/html" src="./ToolsetFlowchart-fix.svg">
+</embed>
+<h3 id="iframe">iframe</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="kw">&lt;iframe</span><span class="ot"> src=</span><span class="st">&quot;./ToolsetFlowchart-fix.svg&quot;</span><span class="kw">&gt;&lt;/iframe&gt;</span></span></code></pre></div>
+<iframe src="./ToolsetFlowchart-fix.svg">
+</iframe>
+<h3 id="link">link</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;html-import&quot;</span><span class="ot"> href=</span><span class="st">&quot;./ToolsetFlowchart-fix.svg&quot;</span><span class="kw">&gt;&lt;/link&gt;</span></span></code></pre></div>
+<p><link rel="html-import" href="./ToolsetFlowchart-fix.svg"></link></p>
+<h3 id="php-style-with-server-side-substitution">PHP style with server side substitution</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co">&lt;!--#include file=&quot;ToolsetFlowchart-fix.svg&quot; --&gt;</span></span></code></pre></div>
+<!--#include file="ToolsetFlowchart-fix.svg" -->
+</body>
+</html>
